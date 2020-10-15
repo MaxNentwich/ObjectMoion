@@ -56,6 +56,7 @@ fig = plt.figure()
 Cx = np.zeros(len(frame_range))
 Cy = np.zeros(len(frame_range))
 motion = np.zeros(len(frame_range)) * np.nan
+n_object = np.zeros(len(frame_range)) * np.nan
 
 # Load the annotation data
 for i, n_fr in enumerate(frame_range):
@@ -94,6 +95,9 @@ for i, n_fr in enumerate(frame_range):
     
     # Check if there are any objects in this frame 
     if indices:
+        
+        # Count the number of objects
+        n_object[i] = len(indices)
         
         # Copy the coordinated of the annotations from the past frame 
         if i == 0:
@@ -174,7 +178,7 @@ for i, n_fr in enumerate(frame_range):
             
         # The total motion for this frame is the sum of the motion of all objects
         motion[i] = np.sum(motion_all)
-
+    
 ## Plot the coordinates
 plt.figure()
 plt.plot(motion)
