@@ -19,11 +19,15 @@ from matplotlib import colors as mcolors
 # Custom function to compute centroid
 import geometry
 
+# Define an object to be plotted and extracted
+#object_select = 'Body_Face'
+object_select = 'Identities_Human_Child'
+
 # Define frame rate for plotting
 fr = 30
 
 # Select range of frames to plot (be carefull not to make too large)
-frame_range = np.arange(3000, 3100)
+frame_range = np.arange(1, 100)
 
 # Run setup file (contains data directories)
 exec(open('setup_object_motion.py').read())
@@ -73,6 +77,10 @@ for i in frame_range:
     
     # Loop over all shapes in this frame 
     for shape in range(len(annotation['shapes'])):  
+        
+        # Check if the object is the object category of interest
+        if annotation['shapes'][shape]['label'] != object_select:
+            continue
         
         # Convert coordinates of annotation to numpy array
         point_coords = np.asarray(annotation['shapes'][shape]['points'])
