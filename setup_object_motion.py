@@ -15,7 +15,7 @@ import sys
 
 # Define directories
 annot_dir = '/home/max/Documents/Dropbox (City College)/Annotation'
-present_dir = 'present_all_frames_annot_copy'
+present_dir = 'Movie_The_Present'
 
 # Add directories to path 
 sys.path.append(annot_dir)
